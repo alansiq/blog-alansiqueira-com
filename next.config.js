@@ -6,4 +6,7 @@ module.exports = {
     defaultLocale: 'us',
     localeDetection: false,
   },
+   images: {
+    domains: ['images.pexels.com'],
+  },
 }
