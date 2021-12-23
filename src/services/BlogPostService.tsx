@@ -27,7 +27,6 @@ export const getAllPosts = () => {
 
 export const getSinglePost = async (slug: string) => {
   const source = getSourceOfFile(slug + ".mdx").toString();
-  console.log(source);
   const { code, frontmatter } = await bundleMDX({
     source: source,
     cwd: POSTS_PATH,
