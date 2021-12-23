@@ -4,13 +4,23 @@ import Container from "@mui/material/Container";
 const DefaultLayout: React.FC = (props) => {
   return (
     <Container
-      maxWidth="lg"
       sx={{
-        display: "flex",
-        flexDirection: "column",
+        width: "100vw",
+        height: "100%",
+        maxWidth: "100% !important",
+        backgroundColor: "background.default",
+        color: "primary.contrastText",
       }}
     >
-      {props.children}
+      <Container
+        maxWidth="lg"
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+        }}
+      >
+        {props.children}
+      </Container>
     </Container>
   );
 };
