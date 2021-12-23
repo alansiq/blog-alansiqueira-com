@@ -1,6 +1,4 @@
 import styled from "@emotion/styled";
-import { getAllPosts } from "../../services/BlogPostService";
-import { GetAllPostsModel } from "../../models/GetAllPostsModel";
 
 import PostHighlighted from "../../components/PostHighlighted";
 import PostDefault from "../../components/PostDefault";
@@ -8,11 +6,15 @@ import PostDefault from "../../components/PostDefault";
 import Link from "next/link";
 import Button from "@mui/material/Button";
 import { BlogHomeModel } from "../../models/BlogHomeModel";
+import { Stack } from "@mui/material";
 
 const BlogContainer = styled.div`
   display: flex;
   gap: 20px;
   padding: 24px;
+  @media (max-width: 1128px) {
+    flex-wrap: wrap;
+  }
 `;
 
 const BlogColumn = styled.div`
@@ -25,24 +27,25 @@ const BlogColumn = styled.div`
 const BlogHome: React.FC<BlogHomeModel> = ({ posts, firstPost }) => {
   return (
     <>
+      {/* <h4>Highlighted Post</h4> */}
+
       <BlogContainer>
         <BlogColumn>
-          <h4>Highlighted Posts</h4>
           <PostHighlighted
             frontmatter={firstPost.frontmatter}
             code={firstPost.code}
           />
         </BlogColumn>
         <BlogColumn>
-          {/* <ul>
-            {postsArray.map((post, index) => (
-              <li key={index}>
-                <Link passHref href={`/blog/${post.slug}`}>
-                  <Button variant="contained">{post.frontmatter.title}</Button>
-                </Link>
-              </li>
+          <Stack spacing={2}>
+            {posts.map((post, index) => (
+              <PostDefault
+                key={index}
+                frontmatter={post.frontmatter}
+                slug={post.slug}
+              />
             ))}
-          </ul> */}
+          </Stack>
         </BlogColumn>
       </BlogContainer>
     </>

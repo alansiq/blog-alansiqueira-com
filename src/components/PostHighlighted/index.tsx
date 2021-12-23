@@ -1,9 +1,10 @@
 import Image from "next/image";
 import Chip from "@mui/material/Chip";
 import Stack from "@mui/material/Stack";
-import { Typography } from "@mui/material";
+import { Button, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import { GetSinglePostModel } from "../../models/GetSinglePostModel";
+import Link from "next/link";
 
 const PostHighlighted: React.FC<GetSinglePostModel> = ({ frontmatter }) => {
   const tags = frontmatter.tags.split(",");
@@ -29,7 +30,13 @@ const PostHighlighted: React.FC<GetSinglePostModel> = ({ frontmatter }) => {
         ))}
       </Stack>
       <Typography variant="h4">{frontmatter.title}</Typography>
+      <Typography variant="caption" color="GrayText">
+        {frontmatter.dataPublicado}
+      </Typography>
       <Typography variant="body1">{frontmatter.firstParagraph}</Typography>
+      <Link passHref href={frontmatter.slug}>
+        <Button color="primary">READ MORE</Button>
+      </Link>
     </Stack>
   );
 };

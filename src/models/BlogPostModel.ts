@@ -1,8 +1,6 @@
 export interface BlogPostModel {
-  post: {
-    frontmatter: {
-      [key: string]: any;
-    };
-    slug: string;
+  frontmatter: {
+    [key: string]: any;
   };
+  slug: string;
 }

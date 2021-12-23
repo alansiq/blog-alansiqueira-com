@@ -3,4 +3,5 @@ export interface GetSinglePostModel {
     [key: string]: any;
   };
   code?: string;
+  slug?: string;
 }

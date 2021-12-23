@@ -32,6 +32,8 @@ export const getSinglePost = async (slug: string) => {
     cwd: POSTS_PATH,
   });
 
+  frontmatter.slug = `blog/${slug}`;
+
   return {
     frontmatter,
     code,
