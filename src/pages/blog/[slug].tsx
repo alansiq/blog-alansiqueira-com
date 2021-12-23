@@ -4,6 +4,7 @@ import { getMDXComponent } from "mdx-bundler/client";
 import { getAllPosts, getSinglePost } from "../../services/BlogPostService";
 import Prism from "prismjs";
 import "prismjs/themes/prism.css";
+import { useRouter } from "next/router";
 
 //@ts-ignore
 const CustomLink = ({ as, href, ...otherProps }) => {
