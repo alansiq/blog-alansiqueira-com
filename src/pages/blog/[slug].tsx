@@ -4,6 +4,7 @@ import { getMDXComponent } from "mdx-bundler/client";
 import { getAllPosts, getSinglePost } from "../../services/BlogPostService";
 import Prism from "prismjs";
 import "prismjs/themes/prism.css";
+import BlogPostLayout from "../../layouts/BlogLayout";
 
 //@ts-ignore
 const CustomLink = ({ as, href, ...otherProps }) => {
@@ -15,7 +16,7 @@ const CustomLink = ({ as, href, ...otherProps }) => {
 };
 
 //@ts-ignore
-const Post = ({ code, frontmatter }) => {
+const Post: React.FC = ({ code, frontmatter }) => {
   useEffect(() => {
     if (typeof window !== "undefined") {
       Prism.highlightAll();
@@ -23,7 +24,7 @@ const Post = ({ code, frontmatter }) => {
   }, []);
   const Component = React.useMemo(() => getMDXComponent(code), [code]);
   return (
-    <div className="wrapper">
+    <BlogPostLayout>
       <h1>{frontmatter.title}</h1>
       <Component
         components={{
@@ -31,9 +32,11 @@ const Post = ({ code, frontmatter }) => {
           a: CustomLink,
         }}
       />
-    </div>
+    </BlogPostLayout>
   );
 };
+
+export default Post;
 
 //@ts-ignore
 export const getStaticProps = async ({ params }) => {
@@ -50,5 +53,3 @@ export const getStaticPaths = async () => {
     fallback: false,
   };
 };
-
-export default Post;

@@ -6,7 +6,7 @@ const DefaultLayout: React.FC = (props) => {
     <Container
       sx={{
         width: "100vw",
-        height: "100%",
+        minHeight: "100%",
         maxWidth: "100% !important",
         backgroundColor: "background.default",
         color: "primary.contrastText",
