@@ -2,6 +2,7 @@ import React from "react";
 import Container from "@mui/material/Container";
 import styled from "@emotion/styled";
 import { FaDribbble, FaLinkedinIn, FaGithub } from "react-icons/fa";
+import { Typography } from "@mui/material";
 
 const HeroTitle = styled.h1`
   font-size: 2em;
@@ -41,10 +42,24 @@ const SocialList = styled.ul`
 const Hero: React.FC = (props) => {
   return (
     <Container>
-      <HeroTitle>
+      <Typography
+        variant="h1"
+        sx={{
+          fontSize: {
+            xs: 45,
+            sm: 55,
+            md: 85,
+            lg: 95,
+          },
+        }}
+      >
         Web Developer, front-end enthusiast and motorcycle lover. I’m Alan
         Siqueira<Highlight>.</Highlight>
-      </HeroTitle>
+      </Typography>
+      {/* <HeroTitle>
+        Web Developer, front-end enthusiast and motorcycle lover. I’m Alan
+        Siqueira<Highlight>.</Highlight>
+      </HeroTitle> */}
 
       <SocialList>
         <a target="blank" href="https://dribbble.com/alansiqueira">
