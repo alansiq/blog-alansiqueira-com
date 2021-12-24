@@ -11,34 +11,52 @@ const PostDefault: React.FC<GetSinglePostModel> = ({ frontmatter, slug }) => {
     <Link href={`blog/${slug}`} passHref>
       <Box
         sx={{
-          whiteSpace: "nowrap",
           transition: "all 0.2s",
           cursor: "pointer",
+          padding: "4px",
           position: "relative",
           borderRadius: "16px",
 
           "&:hover": {
-            padding: "8px",
             backgroundColor: "background.paper",
           },
         }}
       >
-        <Stack direction="row" spacing={1}>
+        <Stack
+          direction="row"
+          spacing={2}
+          sx={{
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
           <Box
             sx={{
+              position: "relative",
               overflow: "hidden",
               borderRadius: "16px",
+              height: "100px",
+              width: "150px",
             }}
           >
             <Image
               src={frontmatter.coverUrl}
-              height={100}
-              width={110}
+              layout="fill"
               alt={frontmatter.title}
             />
           </Box>
           <Stack>
-            <Typography variant="h5">{frontmatter.title}</Typography>
+            <Typography
+              variant="h5"
+              sx={{
+                fontSize: {
+                  sm: 16,
+                  lg: 24,
+                },
+              }}
+            >
+              {frontmatter.title}
+            </Typography>
             <Stack direction="row" spacing={2} sx={{ alignItems: "center" }}>
               <Stack direction="row" spacing={1}>
                 {tags.map((t: string, i: number) => (
