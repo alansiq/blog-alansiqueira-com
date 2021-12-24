@@ -9,9 +9,15 @@ import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 
-import { ThemeProvider, useTheme } from "@mui/system";
+import { ThemeProvider } from "@mui/system";
 import { createTheme } from "@mui/material/styles";
-export const dark = createTheme({
+
+import NProgress from "nprogress"; //nprogress module
+import "nprogress/nprogress.css"; //styles of nprogress
+import { Router } from "next/router";
+import Footer from "../components/Footer";
+
+export const darkTheme = createTheme({
   palette: {
     mode: "dark",
     primary: {
@@ -27,63 +33,21 @@ export const dark = createTheme({
   },
 });
 
-export const light = createTheme({
-  palette: {
-    mode: "light",
-    primary: {
-      main: "#c32319",
-      contrastText: "#161822",
-    },
-    secondary: {
-      main: "#19b0c3",
-    },
-    background: {
-      default: "#eeeeee",
-      paper: "#ffffff",
-    },
-  },
-});
+//Binding events.
+Router.events.on("routeChangeStart", () => NProgress.start());
+Router.events.on("routeChangeComplete", () => NProgress.done());
+Router.events.on("routeChangeError", () => NProgress.done());
 
 function MyApp({ Component, pageProps }: AppProps) {
-  const theme = useTheme(light);
-
   return (
-    <ThemeProvider theme={dark}>
+    <ThemeProvider theme={darkTheme}>
       <Layout>
         <Nav></Nav>
         <Component {...pageProps} />
+        <Footer></Footer>
       </Layout>
     </ThemeProvider>
   );
 }
 
 export default MyApp;
-
-//@ts-ignore
-// export function ToggleColorMode(props) {
-//   const [mode, setMode] = useState(light);
-//   const colorMode = useMemo(
-//     () => ({
-//       toggleColorMode: () => {
-//         setMode((prevMode) => (prevMode === "light" ? "dark" : "light"));
-//       },
-//     }),
-//     []
-//   );
-
-//   const theme = useMemo(
-//     () =>
-//       createTheme({
-//         palette: {
-//           mode,
-//         },
-//       }),
-//     [mode]
-//   );
-
-//   return (
-//     <ColorModeContext.Provider value={colorMode}>
-//       <ThemeProvider theme={theme}>{props.children}</ThemeProvider>
-//     </ColorModeContext.Provider>
-//   );
-// }
