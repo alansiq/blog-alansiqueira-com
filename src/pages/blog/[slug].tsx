@@ -6,6 +6,27 @@ import Prism from "prismjs";
 import "dracula-prism/dist/css/dracula-prism.min.css";
 import BlogPostLayout from "../../layouts/BlogLayout";
 import Image from "next/image";
+import { useRouter } from "next/router";
+import Breadcrumbs from "nextjs-breadcrumbs";
+import styled from "@emotion/styled";
+
+const BreadCrumbContainer = styled.div`
+  ol {
+    color: #aaa;
+    display: flex;
+    gap: 8px;
+
+    li {
+      &:hover {
+        text-decoration: underline;
+      }
+
+      &:last-child {
+        text-decoration: underline;
+      }
+    }
+  }
+`;
 
 //@ts-ignore
 const CustomLink = ({ as, href, ...otherProps }) => {
@@ -18,11 +39,17 @@ const CustomLink = ({ as, href, ...otherProps }) => {
 
 //@ts-ignore
 const Post: React.FC = ({ code, frontmatter }) => {
+  const router = useRouter();
+  // const splitPath = asPath.split("/");
+
+  // console.log(splitPath);
+  console.log(router);
   useEffect(() => {
     if (typeof window !== "undefined") {
       Prism.highlightAll();
     }
   }, []);
+
   const Component = React.useMemo(() => getMDXComponent(code), [code]);
   return (
     <BlogPostLayout
@@ -38,6 +65,9 @@ const Post: React.FC = ({ code, frontmatter }) => {
         height={300}
         alt={frontmatter.headTitle}
       />
+      <BreadCrumbContainer>
+        <Breadcrumbs transformLabel={(l) => `${l} /`} rootLabel="home" />
+      </BreadCrumbContainer>
       <Component
         components={{
           //@ts-ignore
