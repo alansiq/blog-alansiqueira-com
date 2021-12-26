@@ -15,6 +15,7 @@
     "@mui/material": "^5.2.5",
     "@mui/types": "^7.1.0",
     "date-fns": "^2.27.0",
+    "dracula-prism": "^2.1.5",
     "esbuild": "^0.14.7",
     "gray-matter": "^4.0.3",
     "mdx-bundler": "^8.0.1",

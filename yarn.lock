@@ -1584,6 +1584,11 @@
   "resolved" "https://registry.npmjs.org/domain-browser/-/domain-browser-4.19.0.tgz"
   "version" "4.19.0"
 
+"dracula-prism@^2.1.5":
+  "integrity" "sha512-g8KTd9dJHQVCdmoxJyYtoWUJFOU+R99SRsDQpahQ4rbgxQvh5KmNI/qm2pc8gqM0JzZm2hZlGzhyc3zZIzN52g=="
+  "resolved" "https://registry.npmjs.org/dracula-prism/-/dracula-prism-2.1.5.tgz"
+  "version" "2.1.5"
+
 "electron-to-chromium@^1.3.723", "electron-to-chromium@^1.4.17":
   "integrity" "sha512-cA1YwlRzO6TGp7yd3+KAqh9Tt6Z4CuuKqsAJP6uF/H5MQryjAGDhMhnY5cEXo8MaRCczpzSBhMPdqRIodkbZYw=="
   "resolved" "https://registry.npmjs.org/electron-to-chromium/-/electron-to-chromium-1.4.26.tgz"
