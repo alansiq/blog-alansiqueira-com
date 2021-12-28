@@ -18,6 +18,7 @@ export default Home;
 export const getStaticProps = async () => {
   const posts = getAllPosts();
   const firstPost = await getSinglePost(posts[0].slug);
+  posts.shift();
 
   return {
     props: {
