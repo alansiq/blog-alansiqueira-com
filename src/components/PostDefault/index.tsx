@@ -19,6 +19,10 @@ const PostDefault: React.FC<GetSinglePostModel> = ({ frontmatter, slug }) => {
 
           "&:hover": {
             backgroundColor: "background.paper",
+
+            ".postdefault-custombox": {
+              transform: "translate(-15px, -15px)",
+            },
           },
         }}
       >
@@ -26,20 +30,22 @@ const PostDefault: React.FC<GetSinglePostModel> = ({ frontmatter, slug }) => {
           direction="row"
           spacing={2}
           sx={{
-            justifyContent: "center",
             alignItems: "center",
           }}
         >
           <Box
+            className="postdefault-custombox"
             sx={{
               position: "relative",
               overflow: "hidden",
               borderRadius: "16px",
               height: "100px",
               width: "150px",
+              transition: "all 0.1s",
             }}
           >
             <Image
+              className="postdefault-image"
               src={frontmatter.coverUrl}
               layout="fill"
               alt={frontmatter.title}

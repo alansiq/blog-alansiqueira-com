@@ -3,8 +3,6 @@ import styled from "@emotion/styled";
 import PostHighlighted from "../../components/PostHighlighted";
 import PostDefault from "../../components/PostDefault";
 
-import Link from "next/link";
-import Button from "@mui/material/Button";
 import { BlogHomeModel } from "../../models/BlogHomeModel";
 import { Stack } from "@mui/material";
 
