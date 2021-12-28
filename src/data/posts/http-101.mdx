@@ -1,0 +1,31 @@
+---
+title: HTTP Requests 101
+headTitle: HTTP Requests 101
+dataPublicado: 10/09/2021
+tags: Basics,Programming
+coverUrl: https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260
+author: Alan Siqueira
+firstParagraph: The HyperText Transfer Protocol (HTTP) is considered the backbone of the internet as we know it. Through these, we can make dynamic web applications such as retrieving the latest blog posts in our front-end and registering our newest Newsletter sign-ups to whatever database we are using. Scale it up to the real world and we have ATMs handling millions and millions of bank withdrawals daily, IoT devices turning your lights on or off and your favorite social media shooting your latest pic out to your entire network. Understanding this concept is fundamental to learning any sort of web development.
+---
+
+# HTTP Requests 101
+
+The **H**yper**T**ext **T**ransfer **P**rotocol (HTTP) is considered the backbone of the internet as we know it. Through these, we can make dynamic web applications such as retrieving the latest blog posts in our front-end and registering our newest Newsletter sign-ups to whatever database we are using. Scale it up to the real world and we have ATMs handling millions and millions of bank withdrawals daily, IoT devices turning your lights on or off and your favorite social media shooting your latest pic out to your entire network. Understanding this concept is fundamental to learning any sort of web development.
+
+## But how does it work?
+
+I would love to say it's just Magic and get this over with, but there's more to it than *just* magic. HTTP requests have different methods. And the **most used ones** are:
+
+- **GET:** The most used method for looking up data. You can use it to read all of the data available in a specific directory or just **some** of the data filtered by a query param, for instance.
+- **POST:** Used to input/register new information. Not recommended for use
+- **PUT:** Mostly used to update a whole set of data.
+- **DELETE:** Erase something or an entire set of information.
+- **PATCH:** Use it to fill out blank spots / incomplete information.
+
+So, basically, you can have some or all of these to a specific address - then set up your server to do something with it. You can send a:
+
+GET request to https://api.com/users to retrieve a list of all the users registered there or
+
+POST request to https://api.com/users to register a new user to your list.
+
+Even though it's the same URL, you can take different actions with different methods.

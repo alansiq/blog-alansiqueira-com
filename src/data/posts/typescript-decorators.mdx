@@ -1,0 +1,102 @@
+---
+title: Typescript Decorators
+headTitle: Typescript Decorators
+dataPublicado: 30/06/2020
+tags: Programming,Typescript
+coverUrl: https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1472&q=80
+author: Alan Siqueira
+firstParagraph: Typescript's decorators help us create elegant code. Although tempting, we should refrain from overusing them in our code. We will mostly use Typescript decorators on Before we start, the best way to see it in action is to compare TypeORM Entity method with and without the use of decorators. Below you'll find how you'd declare an Entity with TypeORM without decorators.
+---
+
+# Typescript Decorators
+
+Typescript's decorators help us create elegant code. Although tempting, we should refrain from overusing them in our code. We will mostly use Typescript decorators on
+
+```ts
+class definitions
+properties
+methods
+accessors
+parameters
+```
+
+Before we start, the best way to see it in action is to compare TypeORM Entity method with and without the use of decorators. Below you'll find how you'd declare an Entity with TypeORM without decorators:
+
+```ts
+module.exports = {
+  name: "Post",
+  columns: {
+    id: {
+      primary: true,
+      type: "int",
+      generated: true,
+    },
+    title: {
+      type: "varchar",
+    },
+    text: {
+      type: "text",
+    },
+  },
+};
+```
+
+And now, the same Entity connection but with the use of decorators:
+
+```ts
+import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
+
+@Entity()
+export class Post {
+  @PrimaryGeneratedColumn()
+  id: number;
+
+  @Column()
+  title: string;
+
+  @Column()
+  text: string;
+}
+```
+
+In the examples above, Typeorm library uses the decorator function to shorten the process of mapping a database table for you. Of course you still can do it with plain ES6/ES5 Javascript, but if you'll extend your typescript application to its fullest potential you should enable the usage of decorators.
+
+We can enable it by editing our tsconfig.json:
+
+```json
+{
+  "compilerOptions": {
+    "target": "ES5",
+    "experimentalDecorators": true
+  }
+}
+```
+
+### Decorator Factories:
+
+Decorator factories are used to customize how they are applied to a declaration. They are basically a function with an expression that will be called upon running the decorator:
+
+```ts
+function Freeze(value: string) {
+  // Factory
+  return function (target) {
+    // Decorator
+    target.frozen = true;
+  };
+}
+
+/*
+ * Calling the decorator
+ */
+
+@Freeze()
+const IceCubes = () => {};
+```
+
+### Class Decorators:
+
+Declared right before a class, this kind of decorator is applied to the constructor of the class and can be used to replace a definition or modify it.
+
+[Reference video](https://www.youtube.com/watch?v=O6A-u_FoEX8)
+
+[Official Documentation](https://www.typescriptlang.org/docs/handbook/decorators.html)
