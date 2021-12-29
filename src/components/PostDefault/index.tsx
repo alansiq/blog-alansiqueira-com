@@ -2,7 +2,6 @@ import { Typography, Stack, Box, Chip } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
 import { GetSinglePostModel } from "../../models/GetSinglePostModel";
-import ArrowForward from "@mui/icons-material/ArrowForward";
 
 const PostDefault: React.FC<GetSinglePostModel> = ({ frontmatter, slug }) => {
   const tags = frontmatter.tags.split(",");
@@ -36,6 +35,7 @@ const PostDefault: React.FC<GetSinglePostModel> = ({ frontmatter, slug }) => {
           <Box
             className="postdefault-custombox"
             sx={{
+              display: ["none", "block", "block", "block"],
               position: "relative",
               overflow: "hidden",
               borderRadius: "16px",
