@@ -17,6 +17,8 @@ const DefaultLayout: React.FC = (props) => {
         sx={{
           display: "flex",
           flexDirection: "column",
+          paddingLeft: 0,
+          paddingRight: 0,
         }}
       >
         {props.children}
