@@ -13,12 +13,14 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import Breadcrumbs from "nextjs-breadcrumbs";
 import styled from "@emotion/styled";
+import { Box } from "@mui/material";
 
 const BreadCrumbContainer = styled.div`
   ol {
     color: #aaa;
     display: flex;
     gap: 8px;
+    white-space: pre;
 
     li {
       &:hover {
@@ -63,14 +65,25 @@ const Post: React.FC = ({ code, frontmatter }) => {
       coverUrl={frontmatter.coverUrl}
       author={frontmatter.author}
     >
-      <Image
-        src={frontmatter.coverUrl}
-        width={800}
-        height={300}
-        alt={frontmatter.headTitle}
-      />
+      {frontmatter.coverUrl && (
+        <Box
+          sx={{
+            position: "relative",
+            width: "100%",
+          }}
+        >
+          <Image
+            src={frontmatter.coverUrl}
+            width={1470}
+            height={980}
+            layout="responsive"
+            alt={frontmatter.headTitle}
+          />
+        </Box>
+      )}
+
       <BreadCrumbContainer>
-        <Breadcrumbs transformLabel={(l) => `${l} /`} rootLabel="home" />
+        <Breadcrumbs transformLabel={(l) => `${l}/`} rootLabel="home" />
       </BreadCrumbContainer>
       <Component
         components={{
