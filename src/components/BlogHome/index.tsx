@@ -7,11 +7,23 @@ import { BlogHomeModel } from "../../models/BlogHomeModel";
 import { Stack } from "@mui/material";
 
 const BlogContainer = styled.div`
+  position: relative;
   display: flex;
   gap: 20px;
   padding: 24px;
   @media (max-width: 1128px) {
     flex-wrap: wrap;
+  }
+
+  &::before {
+    content: "Check out my latest posts:";
+    position: absolute;
+    top: -5px;
+    left: 40px;
+    color: #fff;
+
+    font-weight: 600;
+    font-size: 1.5em;
   }
 `;
 

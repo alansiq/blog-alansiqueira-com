@@ -1,4 +1,4 @@
-import { getAllPosts, getSinglePost } from "../services/BlogPostService";
+import { BlogPostService } from "../services/BlogPostService";
 import Hero from "../components/Hero";
 import BlogHome from "../components/BlogHome";
 import { BlogHomeModel } from "../models/BlogHomeModel";
@@ -16,8 +16,10 @@ const Home: React.FC<BlogHomeModel> = ({ posts, firstPost }) => {
 export default Home;
 
 export const getStaticProps = async () => {
-  const posts = getAllPosts();
-  const firstPost = await getSinglePost(posts[0].slug);
+  const blogPostService = new BlogPostService();
+
+  const posts = blogPostService.getAllPosts();
+  const firstPost = await blogPostService.getSinglePost(posts[0].slug);
   posts.shift();
 
   return {

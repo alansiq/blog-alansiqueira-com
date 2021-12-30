@@ -6,6 +6,12 @@ const Logo = styled.h1`
   font-size: 1em;
   font-weight: bolder;
   color: #fff;
+  transition: all 0.1s;
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.2);
+  }
 `;
 
 const LinkList = styled.ul`
@@ -52,7 +58,9 @@ const Nav: React.FC = (props) => {
         margin: "48px 0px",
       }}
     >
-      <Logo>Alan Siqueira</Logo>
+      <Link passHref href="/">
+        <Logo>Alan Siqueira</Logo>
+      </Link>
       <LinkList>
         <Link passHref href="/">
           <li>Home</li>
@@ -60,9 +68,9 @@ const Nav: React.FC = (props) => {
         <Link passHref href="/blog">
           <li>Blog</li>
         </Link>
-        <Link passHref href="/goodies">
+        {/* <Link passHref href="/goodies">
           <li>Goodies</li>
-        </Link>
+        </Link> */}
       </LinkList>
     </Container>
   );
