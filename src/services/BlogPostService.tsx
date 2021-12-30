@@ -3,39 +3,40 @@ import path from "path";
 import { bundleMDX } from "mdx-bundler";
 import matter from "gray-matter";
 
-export const POSTS_PATH = path.join(process.cwd(), "src/data/posts");
+export class BlogPostService {
+  private POSTS_PATH = path.join(process.cwd(), "src/data/posts");
+  public getSourceOfFile(fileName: string) {
+    return fs.readFileSync(path.join(this.POSTS_PATH, fileName));
+  }
 
-export const getSourceOfFile = (fileName: string) => {
-  return fs.readFileSync(path.join(POSTS_PATH, fileName));
-};
+  public getAllPosts() {
+    return fs
+      .readdirSync(this.POSTS_PATH)
+      .filter((path) => /\.mdx?$/.test(path))
+      .map((fileName) => {
+        const source = this.getSourceOfFile(fileName);
+        const slug = fileName.replace(/\.mdx?$/, "");
+        const { data } = matter(source);
 
-export const getAllPosts = () => {
-  return fs
-    .readdirSync(POSTS_PATH)
-    .filter((path) => /\.mdx?$/.test(path))
-    .map((fileName) => {
-      const source = getSourceOfFile(fileName);
-      const slug = fileName.replace(/\.mdx?$/, "");
-      const { data } = matter(source);
+        return {
+          frontmatter: data,
+          slug: slug,
+        };
+      });
+  }
 
-      return {
-        frontmatter: data,
-        slug: slug,
-      };
+  public async getSinglePost(slug: string) {
+    const source = this.getSourceOfFile(slug + ".mdx").toString();
+    const { code, frontmatter } = await bundleMDX({
+      source: source,
+      cwd: this.POSTS_PATH,
     });
-};
 
-export const getSinglePost = async (slug: string) => {
-  const source = getSourceOfFile(slug + ".mdx").toString();
-  const { code, frontmatter } = await bundleMDX({
-    source: source,
-    cwd: POSTS_PATH,
-  });
+    frontmatter.slug = `blog/${slug}`;
 
-  frontmatter.slug = `blog/${slug}`;
-
-  return {
-    frontmatter,
-    code,
-  };
-};
+    return {
+      frontmatter,
+      code,
+    };
+  }
+}
